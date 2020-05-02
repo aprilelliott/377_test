@@ -1,0 +1,133 @@
+/*
+  These are some base styles so that our tutorial looks good.
+
+*/
+: html {
+  /* border-box box model allows us to add padding and border to our elements without increasing their size */
+  box-sizing: border-box;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+/*
+  We inherit box-sizing: border-box; from our <html> selector
+  Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
+*/
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: teal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 5px 0;
+}
+
+
+/* start demo here */
+/* very important to have web tools on to see what is happening as you walk through this */
+
+
+.grid-container {
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, minmax(150px, 1fr)); */
+  /* Defines a min and a max that the track will be. This says 2 tracks, at minimum they will be 150px wide, and at maximum they will be the total width of the grid . Narrow window small and make wide to show. Divs will fill the grid and images in divs will align left by default.  */
+
+  /* Relative to 1% of the height of the viewport vh for height vw for width */
+  /* grid-auto-rows: 50vh; */
+  /* Reduces size of rows (they are big otherwise due to the size of the images) relative to the viewport height */
+
+}
+
+/* step throught is one at time to see what is happening with the images */
+img {
+  /* display: block; */
+  /* width: 100%; */
+  /* height: 100%; */ 
+ /* Squished for a minute */
+
+ /*  object-fit: cover; */
+ /* Tells the content how to fit the container (the div). Cover tells it to cut off the sides, preserve the aspect ratio and fill the container. */
+
+  /* border: 1px solid black; */
+  /* box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5); */
+}
+
+/* add these in to explain media query and explictly changing the about of columns */
+
+/* Let's make it responsive to the columns change depending on the break (when we're done it should open as 2 columns, 3, then 4 then 5..) */
+
+@media (min-width: 360px) {
+  .grid-container {
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* grid-auto-rows: 33vh; */
+  }
+}
+
+@media (min-width: 500px) {
+  .grid-container {
+    /* grid-template-columns: repeat(4, 1fr); */
+    /* grid-auto-rows: 25vh; */
+  }
+}
+
+@media (min-width: 700px) {
+  .grid-container {
+    /* grid-template-columns: repeat(5, 1fr); */
+    
+  }
+}
+
+@media (min-width: 900px) {
+  .grid-container {
+    /* grid-template-columns: repeat(7, 1fr); */
+  
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid-container {
+   /*  grid-template-columns: repeat(9, 1fr); */
+   
+  }
+}
+
+
+/* add these classes on a couple of items in the html */
+.tall {
+  /* grid-row: span 2; */
+
+}
+
+.wide {
+  /* grid-column: span 2; */
+}
+
+/* They are going to fill grid space as they can fit */
+
+
+
+/* you can try some other classes like big and make is span 2 by 2. */
+
+.big {
+  /* grid-row: span 2; */
+  /* grid-column: span 2; */
+}
+/* expain why this is good and bad for flow */
+
+.grid-container {
+  /* grid-auto-flow: dense;  */
+/* This makes the grid fill in holes that appear earlier in the grid with items that would normally appear later. Good becasue it fills holes, but bad because the items will be out of order. Without it, the grid only moves forward when filling holes so items are not out of order.  */
+}
+
+/* Can add a grid-gap to the first gridcontainer if we want space in between pics */
